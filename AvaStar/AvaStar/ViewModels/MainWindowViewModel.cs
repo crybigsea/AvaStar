@@ -3,6 +3,8 @@ using AvaStar.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
+using AvaStar.Utilities;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AvaStar.ViewModels
 {
@@ -13,6 +15,7 @@ namespace AvaStar.ViewModels
 
 
         [ObservableProperty] private ViewModelBase? _selectedPage;
+        [ObservableProperty] private bool _titleBarVisible = true;
 
         public MainWindowViewModel(IEnumerable<ViewModelBase> allPages, PageNavigationService pageNavigationService)
         {
@@ -27,5 +30,8 @@ namespace AvaStar.ViewModels
             };
 
         }
+
+        [RelayCommand]
+        private void OpenUrl(string url) => UrlUtilities.OpenUrl(url);
     }
 }
