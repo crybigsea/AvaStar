@@ -1,8 +1,10 @@
 ﻿using Avalonia.Collections;
+using Avalonia.Styling;
 using AvaStar.Services;
 using AvaStar.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SukiUI;
 using SukiUI.Dialogs;
 using SukiUI.Toasts;
 using System.Collections.Generic;
@@ -20,12 +22,16 @@ namespace AvaStar.ViewModels
 
         [ObservableProperty] private ViewModelBase? _selectedPage;
         [ObservableProperty] private bool _titleBarVisible = true;
+        [ObservableProperty] private string _changeThemeIcon;
 
         public MainWindowViewModel(IEnumerable<ViewModelBase> allPages, PageNavigationService pageNavigationService, ISukiToastManager toastManager, ISukiDialogManager dialogManager)
         {
             ToastManager = toastManager;
             DialogManager = dialogManager;
-            AllPages = new AvaloniaList<ViewModelBase>(allPages.OrderBy(x => x.Index).ThenBy(x => x.DisplayName)); 
+
+            ChangeThemeIcon = SukiTheme.GetInstance().ActiveBaseTheme == ThemeVariant.Dark ? "MoonAndStars" : "SunCompass";
+
+            AllPages = new AvaloniaList<ViewModelBase>(allPages.OrderBy(x => x.Index).ThenBy(x => x.DisplayName));
             PageNavigationService = pageNavigationService;
 
             pageNavigationService.NavigationRequested += pageType =>
@@ -35,6 +41,13 @@ namespace AvaStar.ViewModels
                 SelectedPage = page;
             };
 
+        }
+
+        [RelayCommand]
+        private void ChangeTheme()
+        {
+            SukiTheme.GetInstance().SwitchBaseTheme();
+            ChangeThemeIcon = SukiTheme.GetInstance().ActiveBaseTheme == ThemeVariant.Dark ? "MoonAndStars" : "SunCompass";
         }
 
         [RelayCommand]

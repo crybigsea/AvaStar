@@ -10,12 +10,19 @@
                    x:DataType="vm:MainWindowViewModel"
                    Icon="/Assets/logo.png"
                    Title="AvaStar"
-                   IsTitleBarVisible="True"
-                   WindowState="Maximized">
-    <sukiUi:SukiWindow.Hosts>
-        <sukiUi:SukiToastHost Manager="{Binding ToastManager}" />
-        <sukiUi:SukiDialogHost Manager="{Binding DialogManager}" />
-    </sukiUi:SukiWindow.Hosts>
+                   CanPin="True"
+                   IsTitleBarVisible="True">
+  <sukiUi:SukiWindow.Hosts>
+    <sukiUi:SukiToastHost Manager="{Binding ToastManager}" />
+    <sukiUi:SukiDialogHost Manager="{Binding DialogManager}" />
+  </sukiUi:SukiWindow.Hosts>
+
+  <sukiUi:SukiWindow.RightWindowTitleBarControls>
+    <Button Classes="WindowControlsButton" Command="{Binding ChangeThemeCommand}">
+      <avalonia:MaterialIcon Foreground="{DynamicResource SukiText}" Kind="{Binding ChangeThemeIcon}" />
+    </Button>
+  </sukiUi:SukiWindow.RightWindowTitleBarControls>
+
 
   <sukiUi:SukiSideMenu IsSearchEnabled="True"
                        ItemsSource="{Binding AllPages}"
