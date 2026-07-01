@@ -2,14 +2,16 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using AvaStar.Common;
+using AvaStar.Services;
 using AvaStar.ViewModels;
 using AvaStar.Views;
 using Microsoft.Extensions.DependencyInjection;
+using SukiUI;
 using SukiUI.Dialogs;
 using SukiUI.Toasts;
 using System;
-using AvaStar.Services;
 
 namespace AvaStar
 {
@@ -24,6 +26,7 @@ namespace AvaStar
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
+                //SukiTheme.GetInstance().ChangeBaseTheme(ThemeVariant.Dark);
                 var services = new ServiceCollection();
                 services.AddSingleton(desktop);
                 var views = ConfigureViews(services);

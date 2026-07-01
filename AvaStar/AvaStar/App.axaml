@@ -6,10 +6,15 @@
              xmlns:sukiUi="clr-namespace:SukiUI;assembly=SukiUI"
              xmlns:common="clr-namespace:AvaStar.Common"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+  <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
-    <Application.Styles>
-        <sukiUi:SukiTheme Locale="zh-CN" ThemeColor="Blue"  />
-        <avalonia:MaterialIconStyles />
-    </Application.Styles>
+  <Application.Styles>
+    <sukiUi:SukiTheme Locale="zh-CN" ThemeColor="Blue"  />
+    <avalonia:MaterialIconStyles />
+  </Application.Styles>
+
+  <Application.Resources>
+    <FontFamily x:Key="PingFang">avares://AvaStar/Assets/Fonts/PingFangSC-Regular.ttf#苹方_中等</FontFamily>
+    <FontFamily x:Key="IconFont">avares://AvaStar/Assets/Fonts/iconfont.ttf#iconfont</FontFamily>
+  </Application.Resources>
 </Application>

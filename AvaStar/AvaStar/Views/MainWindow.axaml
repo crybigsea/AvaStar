@@ -10,7 +10,12 @@
                    x:DataType="vm:MainWindowViewModel"
                    Icon="/Assets/logo.png"
                    Title="AvaStar"
-                   IsTitleBarVisible="True">
+                   IsTitleBarVisible="True"
+                   WindowState="Maximized">
+    <sukiUi:SukiWindow.Hosts>
+        <sukiUi:SukiToastHost Manager="{Binding ToastManager}" />
+        <sukiUi:SukiDialogHost Manager="{Binding DialogManager}" />
+    </sukiUi:SukiWindow.Hosts>
 
   <sukiUi:SukiSideMenu IsSearchEnabled="True"
                        ItemsSource="{Binding AllPages}"

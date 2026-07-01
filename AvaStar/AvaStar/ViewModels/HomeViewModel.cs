@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Material.Icons;
+﻿using Material.Icons;
 
 namespace AvaStar.ViewModels
 {
-    public class HomeViewModel : ViewModelBase
+    public partial class HomeViewModel() : ViewModelBase("首页", MaterialIconKind.Home)
     {
-        public HomeViewModel() : base("Home", MaterialIconKind.Home)
-        {
-        }   
+
     }
 }
